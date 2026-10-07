@@ -1,0 +1,22 @@
+
+# Ignore all lecture recordings and media
+Class Lecture Recordings/
+"Class Lecture Recordings"/
+
+# Ignore large media/transcript filetypes
+*.mp4
+*.m4a
+*.mov
+*.vtt
+*.srt
+
+# Python and notebook checkpoints
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# Homework datasets
+*.txt
+*.json
+*.gz
+.DS_Store

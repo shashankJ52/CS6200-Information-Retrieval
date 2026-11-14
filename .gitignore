@@ -1,22 +1,25 @@
-
-# Ignore all lecture recordings and media
+# Lecture recordings and media
 Class Lecture Recordings/
-"Class Lecture Recordings"/
-
-# Ignore large media/transcript filetypes
 *.mp4
 *.m4a
 *.mov
 *.vtt
 *.srt
 
-# Python and notebook checkpoints
+# Python
 .venv/
 __pycache__/
+*.pyc
 .ipynb_checkpoints/
-
-# Homework datasets
-*.txt
-*.json
-*.gz
 .DS_Store
+
+# Homework datasets (scoped — do not blanket-ignore txt/json)
+Assignments/**/*.txt
+Assignments/**/*.json
+Assignments/**/*.gz
+
+# Project: regenerable data only
+data/raw/
+data/embeddings/
+data/corpus/corpus.jsonl
+data/pools/

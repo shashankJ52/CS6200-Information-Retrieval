@@ -1,0 +1,16 @@
+{
+  "seen": 3233620,
+  "category": 403562,
+  "date": 193543,
+  "survey": 2785,
+  "kept": 190758,
+  "final_size": 190758,
+  "seed": 20261114,
+  "categories": [
+    "cs.CL",
+    "cs.IR",
+    "cs.LG"
+  ],
+  "date_from": "2024-01-01",
+  "date_to": "2026-11-13"
+}

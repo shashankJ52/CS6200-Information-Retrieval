@@ -1,0 +1,748 @@
+[
+  {
+    "query_id": "q01",
+    "query": "memory mechanisms for large language model agents",
+    "facet_source": {
+      "arxiv_id": "2610.35089",
+      "title": "Learning to Remember: Advances in Memory Mechanisms for Large Language Models",
+      "sections": "§4-6",
+      "note": "§2 offers a life-cycle axis (life cycle, storage substrate, system role) that does not partition; facets are the three mechanism families plus the separately treated Benchmarks section. F4 was dropped after an October pilot found one positive in twelve documents, then restored on the instructor's advice that correlation and sparsity observed at that sample size are artifacts of the sample rather than properties of the facet."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Nonparametric memory",
+        "section": "4 Nonparametric Memory",
+        "definition": "Information is stored as explicit records outside the model (text, graph, multimodal). The contribution is how those records are built, retrieved, updated, or hosted."
+      },
+      {
+        "id": "F2",
+        "label": "Parametric memory",
+        "section": "5 Parametric Memory",
+        "definition": "Memory is held inside the model's own state: activations and KV cache, or weights and added modules."
+      },
+      {
+        "id": "F3",
+        "label": "Memory for agent evolution",
+        "section": "6 Memory for Agent Evolution",
+        "definition": "Memory is used so an agent's behaviour improves across tasks or episodes, through training, stored procedures, or managed context."
+      },
+      {
+        "id": "F4",
+        "label": "Memory evaluation",
+        "section": "7 Benchmarks",
+        "definition": "The contribution is a benchmark, protocol or measured comparison for assessing memory-augmented systems, rather than a memory mechanism."
+      }
+    ],
+   "narrative": {
+      "user": "Someone designing a persistent memory layer for an LLM agent. They have not committed to a mechanism and need the range of options plus a sense of how such systems are evaluated.",
+      "relevant": "A paper that proposes, analyses or benchmarks a mechanism by which an LLM retains or reuses information across turns, sessions or tasks. Benchmarks and evaluations of agent memory are in scope, including those that use standard retrieval as a baseline against dedicated memory architectures, and comparisons of full-context stuffing against memory systems.",
+      "non_relevant": "Papers that use retrieval or memory as a component without studying the mechanism. Long-context architecture work where extending the window is the contribution and no information crosses a session boundary. KV-cache compression and eviction framed as reducing single-session memory footprint or latency, which belongs to the KV cache query; a cache paper is in scope only where the cache is framed as memory the model recalls from. Parametric knowledge editing such as ROME and MEMIT, which rewrites static world facts rather than retaining experience. Static persona or system-prompt conditioning, which injects a fixed profile with no memory formation, update or consolidation. Dialogue state tracking, which maintains slot values within a single task rather than across sessions. Hardware and serving papers where memory means RAM. Robotics and vision applications where memory is incidental."
+    },
+    "rules": [
+      "F1 vs F2: is what is stored readable as text, graph or media records (F1), or a model-internal representation such as KV entries, activations or weights (F2)? KV cache offloaded to an external store is still F2.",
+      "F1 vs F3: is the contribution the store itself, meaning how records are written and retrieved (F1), or the agent getting better at tasks because of what it stored (F3)? Assign F3 only if improvement over episodes is evaluated.",
+      "F2 vs F3: does the paper write knowledge into weights so it can be recalled later (F2), or train the agent to improve its policy over time (F3)?",
+      "Cross-query: a KV-cache paper belongs here as F2 only if it frames the cache as memory the model recalls from. If it frames the cache as a resource to shrink, it belongs to q12 (KV cache) instead.",
+      "F4 applies only when evaluation methodology is a claimed contribution. Reporting results on existing benchmarks to validate one's own mechanism is not F4."
+    ],
+    "support_notes": "F2 measured 20/20. F1 abundant, F3 adequate. F4 had one positive in a twelve-document pilot; retained to see whether a 25-document pool supports it."
+  },
+  {
+    "query_id": "q02",
+    "query": "efficient multimodal large language model inference",
+    "facet_source": {
+      "arxiv_id": "2609.19445",
+      "title": "From Models to Systems: A Comprehensive Survey of Efficient Multimodal Learning",
+      "sections": "§2-4",
+      "note": "The three layers of the MAS taxonomy stated in §1.2. §5 is a synthesis section, §6 an application-domain axis cutting across §2-4."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Model",
+        "section": "2 Model",
+        "definition": "Efficiency is built into the architecture itself: encoder design, built-in sparse or decoding structure, or added adaptation modules."
+      },
+      {
+        "id": "F2",
+        "label": "Algorithm",
+        "section": "3 Algorithm",
+        "definition": "An existing model's compute is reduced by compressing tokens, weights, or computation. The architecture is not redesigned and the serving infrastructure is not changed."
+      },
+      {
+        "id": "F3",
+        "label": "System",
+        "section": "4 System",
+        "definition": "How the model is executed and served changes: memory management, device placement, scheduling, or hardware. The model's computation is left unchanged."
+      }
+    ],
+    "narrative": {
+      "user": "Someone deploying a multimodal model that is too slow or too large. They need to know whether to change the architecture, compress what an existing model computes, or change how it is served.",
+      "relevant": "A paper whose contribution reduces the computational, memory or latency cost of multimodal inference, at the level of the architecture, the algorithm applied to a trained model, or the serving system. Empirical profiling that attributes cost across the vision encoder, prefill and decode is in scope, since it informs which lever to pull. Visual token pruning and merging are in scope whether pitched as efficiency, as accuracy improvement, or as both.",
+      "non_relevant": "Papers that improve multimodal accuracy with no efficiency contribution. Training efficiency, where the saving is in pretraining or fine-tuning rather than inference, including work that reduces the number of image-text pairs needed. Text-only efficiency work with no multimodal component. Diffusion and text-to-image or video generation acceleration, which speeds visual generation rather than multimodal language model inference. Dual-encoder and CLIP retrieval optimization, which speeds cross-modal embedding matching rather than autoregressive generation. Speech, ASR and TTS inference optimization with no multimodal language model. Efficient architectures for vision alone, with no language model. Benchmarks that measure multimodal efficiency without analysing where the cost sits or proposing a method."
+    },
+    "rules": [
+      "F1 vs F2 (sparsity): is the sparsity fixed in the architecture and trained in (F1), or chosen per input at inference on an existing model (F2)?",
+      "F1 vs F2 (decoding): does the paper add decoding components to the model (F1), or apply a decoding procedure to an unchanged model (F2)?",
+      "F2 vs F3 (caching): does the paper decide what to cache or reuse within the computation (F2), or how cache memory is allocated and shared across requests (F3)?",
+      "F2 vs F3 (quantization): is the contribution the quantization scheme (F2), or the kernels or accelerator that run it (F3)?",
+      "Decide whether text-only efficiency papers count; a cs.CL-heavy corpus will surface many."
+    ],
+    "support_notes": "F3 measured 18/20 despite expectation that serving work would be cs.DC primary. F1 and F2 abundant."
+  },
+  {
+    "query_id": "q03",
+    "query": "question answering over long visual documents",
+    "facet_source": {
+      "arxiv_id": "2610.31385",
+      "title": "A Task-Centric Survey of Long-Document Visual Question Answering: Taxonomy, Evolution, and Future Directions",
+      "sections": "§3.1-3.3",
+      "note": "The taxonomy sits one level down, under §3 Taxonomy and Technical Evolution. §3.4 Benchmarks excluded as a resource type."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Document parsing",
+        "section": "3.1 Document Parsing",
+        "definition": "Document pages are converted into a representation a model can consume, such as layout, text, or extracted elements, before any question-specific evidence selection."
+      },
+      {
+        "id": "F2",
+        "label": "Evidence organization and retrieval",
+        "section": "3.2 Evidence Organization and Retrieval",
+        "definition": "The parts of a long document relevant to a question are selected or structured. How the answer is produced does not change."
+      },
+      {
+        "id": "F3",
+        "label": "Generation and learning",
+        "section": "3.3 Generation and Learning",
+        "definition": "How the answer is produced from the evidence changes, or how the answering model is trained."
+      }
+    ],
+    "narrative": {
+      "user": "Someone building a system that answers questions about long documents with layout, figures and tables. They need to know where the difficulty sits: converting pages into something a model can read, finding the relevant parts, or generating the answer.",
+      "relevant": "A paper that contributes to answering questions over documents too long for a single pass, by parsing pages into a usable representation, selecting the relevant evidence, or producing the answer from it. Page retrieval across a collection of documents is in scope where the task is still question answering over document pages, as in visual RAG and multi-document DocVQA. Parsing work is in scope where it is built for and evaluated on downstream document question answering.",
+      "non_relevant": "OCR and layout parsing evaluated only as document conversion, with no question answering downstream. Short-document and single-image VQA, where the whole input fits in one pass. Long-video question answering and frame selection, which shares the long-visual and evidence-selection vocabulary without involving documents. Long-document QA over pre-extracted LaTeX, XML or plain text, such as Qasper, where the input is markup rather than page images. Document summarization and key information extraction, which process long visual documents without answering questions. Multi-page document classification or clustering, which has no QA task. Table and chart understanding on isolated elements rather than within a document. Text-only long-document QA with no visual component."
+    },
+    "rules": [
+      "PRIMARY RULE: assign facets by claimed contribution, not by what the system contains. A paper proposing an end-to-end pipeline gets only the stage it claims to advance. Assign two facets only when contributions at both stages are claimed.",
+      "F1 vs F2: is a document structure built once per document regardless of the question (F1), or built or selected for the question (F2)?",
+      "F2 vs F3: is evidence selection a separate module (F2), or learned inside the answering model's training (F3)?",
+      "F1 vs F3: for OCR-free models reading page images directly, is the contribution a parsing output (F1), or the model's encoder and training (F3)?"
+    ],
+    "support_notes": "F1 measured 20/20; parsing-only work exists in volume. Previously flagged for pipeline-shaped facets that may co-occur. Flag lifted on the instructor's advice that correlated facets are acceptable and become informative as the collection grows."
+  },
+  {
+    "query_id": "q04",
+    "query": "generating code that renders charts diagrams and interfaces",
+    "facet_source": {
+      "arxiv_id": "2606.15932",
+      "title": "Beyond NL2Code: A Structured Survey of Multimodal Code Intelligence",
+      "sections": "§3-5",
+      "note": "§6 Frontier Tasks excluded as a catch-all; 'frontier' is a recency label and §6.5 Unified would claim papers from every facet. §2's split (multimodal code synthesis vs code-centric reasoning) is a different axis from the body."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Graphical user interface",
+        "section": "3 Graphical User Interface",
+        "definition": "Code is generated that renders an interactive application interface (website, mobile application)."
+      },
+      {
+        "id": "F2",
+        "label": "Scientific visualization",
+        "section": "4 Scientific Visualization",
+        "definition": "Code is generated that renders a data or scholarly communication artifact: statistical charts, structured documents, academic presentations, scientific demonstrations."
+      },
+      {
+        "id": "F3",
+        "label": "Structured graphics",
+        "section": "5 Structured Graphics",
+        "definition": "Code is generated that specifies vector graphics, diagrams, or geometry (SVG, diagrams, CAD)."
+      }
+    ],
+    "narrative": {
+      "user": "Someone building a system that produces the code behind a visual artifact, from a reference image or from a description. They need to see which output types have been attempted and how each is evaluated.",
+      "relevant": "A paper that generates code rendering a visual artifact: an interactive interface, a chart or structured document, or a vector graphic or diagram. The input may be an image to reproduce or a textual description; what matters is that the output is code whose result is visual.",
+      "non_relevant": "Text-to-code generation whose output is not a rendered visual, such as general program synthesis or algorithm implementation. GUI agent and automation script generation, where a screenshot produces code that operates an interface rather than code that renders one. Image-to-3D and inverse CAD, including procedural shaders, which fall outside interfaces, charts, documents and 2D vector graphics. Mathematical expression recognition that converts formula images to LaTeX, which is character recognition rather than artifact generation. Image captioning and visual question answering, which describe rather than reconstruct. Design tools with no code generation. UI understanding and element detection without producing code."
+    },
+    "rules": [
+      "F2 vs F3 (charts): does a chart emitted as SVG count by what it depicts (F2) or by its output format (F3)? Read §5.1's opening before finalising.",
+      "F2 vs F3 (figures): is the output a whole slide or deck (F2), or a standalone diagram such as a flowchart or architecture figure (F3)?",
+      "F1 vs F2 (static vs interactive): is generated HTML or LaTeX a static document (F2), or an application with interaction (F1)?",
+      "F1 vs F2 (demos): is an interactive web demo meant to explain a scientific concept (F2), or a general-purpose app (F1)?"
+    ],
+    "support_notes": "F3 measured 19/20. SVG generation turns out to be heavily cs.CL because it is framed as code generation over structured text, contrary to the expectation that it would be cs.CV/cs.GR."
+  },
+  {
+    "query_id": "q05",
+    "query": "evaluating llms with fewer benchmark questions",
+    "facet_source": {
+      "arxiv_id": "2610.18248",
+      "title": "Are We Testing Too Much? A Survey of Benchmark Compression for Efficient Evaluation of Large Language Models",
+      "sections": "§3-5",
+      "note": "§2.2 Taxonomy Overview confirms all three as taxonomy branches and states each paper receives one primary label. Appendix C.5 covers hybrid and boundary cases and should be consulted when writing the narrative."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Static benchmark compression",
+        "section": "3 Static Benchmark Compression",
+        "definition": "A reduced set of items is selected once and given to every model evaluated. The set may come from one benchmark or several, and items may be selected by content, by past responses, or by target."
+      },
+      {
+        "id": "F2",
+        "label": "Adaptive evaluation",
+        "section": "4 Adaptive Evaluation",
+        "definition": "Which items to give, or when to stop, is chosen while a particular model is being evaluated, based on that model's own responses so far."
+      },
+      {
+        "id": "F3",
+        "label": "Benchmark analysis and foundations",
+        "section": "5 Benchmark Analysis and Foundations",
+        "definition": "The primary contribution is foundational analysis of benchmark evaluation and compression rather than an operational cost-reduction method. No reduced subset and no adaptive procedure is proposed."
+      }
+    ],
+    "narrative": {
+      "user": "A researcher who wants to know how much benchmark evaluation can be cut without losing the ranking it produces. They are deciding between selecting a fixed subset once and choosing items adaptively per model, and they care whether the reduced evaluation still orders models the way the full suite does.",
+      "relevant": "A paper that reduces the cost of evaluating language models by selecting which benchmark items to use, deciding when to stop testing, or analysing the measurement properties that make such reduction possible. This includes compressed or distilled versions of existing benchmark suites where the subsetting methodology is the contribution, and foundational analyses of item discrimination, redundancy or low-rank structure in model-by-item matrices.",
+      "non_relevant": "Papers selecting data to train on: coreset selection, data pruning and data mixing share the vocabulary but pick what a model learns from, not what it is tested on. Papers that cut evaluation wall-clock time through quantization, speculative decoding, KV-cache compression or batching rather than by reducing the number of items evaluated. Papers replacing human annotation with LLM judges or synthetic test sets, where the saving is in labelling rather than in item count. Prompt compression and few-shot-to-zero-shot reduction, which shorten each item without reducing how many are run. Item response theory or psychometric methodology evaluated solely on human examinees or synthetic response matrices, with no language model under test. Papers proposing a new benchmark that do not address evaluation cost, unless the benchmark is explicitly constructed as a cost-reduced subset of an existing suite. Papers reporting evaluation results without studying the evaluation itself."
+  },
+    "rules": [
+      "F1 vs F2: is the subset fixed before the model is run and then given in full (F1), or updated item by item from that model's responses (F2)? This is the survey's own first-order distinction.",
+      "F1 vs F3: does the paper output a reduced subset (F1), or only analyse past response data (F3)?",
+      "F2 vs F3: for item-response-theory work, does the paper define a procedure that gives items to a model under test (F2), or study measurement properties only (F3)?",
+      "Training data selection is not relevant. Only selection of evaluation items counts. Coreset, data pruning and data mixing papers are non-relevant.",
+      "Classical computerised adaptive testing in education, with no language model under test, is non-relevant."
+    ],
+    "support_notes": "F2 measured 11/20, F1 12/20. F2's noise is classical psychometrics; F1's noise is training data selection. Both need explicit non-relevance criteria."
+  },
+  {
+    "query_id": "q06",
+    "query": "training data selection and augmentation for language models",
+    "facet_source": {
+      "arxiv_id": "2610.33405",
+      "title": "Data Optimization for LLMs: A Survey",
+      "sections": "§5.2-5.4",
+      "note": "Facets taken from subsections of §5 Data Optimization Techniques. Only two top-level sections are taxonomy and §4 Data Perception is a dimension axis (quality, diversity, balance are properties every dataset has), so the technique families one level down were used. §5.5 Other Strategies excluded as a catch-all."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Data selection",
+        "section": "5.2 Data Selection",
+        "definition": "Which existing examples to keep or drop is decided. No new examples are created and no graded weights are assigned."
+      },
+      {
+        "id": "F2",
+        "label": "Data augmentation",
+        "section": "5.3 Data Augmentation",
+        "definition": "New or modified training examples are added, whether generated, perturbed, retrieved, or co-annotated."
+      },
+      {
+        "id": "F3",
+        "label": "Data reweighting",
+        "section": "5.4 Data Reweighting",
+        "definition": "The data is kept but how much each example or domain contributes to training changes."
+      }
+    ],
+    "narrative": {
+      "user": "A practitioner assembling a training set for a language model who has more candidate data than compute. They need to know whether to filter it, generate more of it, or reweight what they already have, and which of those gives the most capability per unit of budget.",
+      "relevant": "A paper whose contribution is an operation on the training data itself: deciding which examples to keep, creating new ones, or changing how much each example or domain contributes during training. This includes released corpora and their construction pipelines where the corpus was built to improve language model training, and online or adaptive methods that select or weight examples during training rather than before it.",
+      "non_relevant": "Papers generating data as a benchmark or an evaluation resource rather than as training material. Papers selecting evaluation items rather than training items. Deduplication and decontamination work, unless the paper frames the operation as improving training data quality rather than as hygiene or leakage prevention. Privacy, unlearning and PII scrubbing, which filter training data for compliance rather than for downstream capability. Retrieval corpus curation for inference-time context, which selects documents to put in a context window rather than data to train on. Tokenization and vocabulary construction, which change how text is segmented rather than which examples are used. Architecture or optimizer papers that use a standard data recipe without studying it."
+    },
+    "rules": [
+      "F1 vs F3: for domain-mixture work, does the paper output an in-or-out decision per example (F1), or continuous weights or sampling proportions (F3)? Proportions that set a domain to zero are still F3.",
+      "F1 vs F2 (generate then filter): are new examples produced (F2)? Add F1 only if the filtering criterion is itself a claimed contribution.",
+      "F1 vs F2 (retrieval): is retrieved data brought in from outside the training set (F2), or chosen from the candidate pool being optimized (F1)?",
+      "F2 vs F3: duplicating or oversampling examples without changing their content is F3, not F2.",
+      "Curriculum and data re-ordering papers belong to the excluded §5.5. Do not force them into F3.",
+      "A paper generating synthetic data is relevant only if the generation is motivated by improving a training set. Papers generating data as a benchmark, an evaluation resource, or an end product are non-relevant."
+    ],
+    "support_notes": "F3 is narrowest and was not separately measured. Run a support check on domain reweighting and sampling proportions before freezing."
+  },
+  {
+    "query_id": "q07",
+    "query": "aggregation strategies in federated learning",
+    "facet_source": {
+      "arxiv_id": "2511.22616",
+      "title": "Federated Learning Survey: A Multi-Level Taxonomy of Aggregation Techniques, Experimental Insights, and Future Frontiers",
+      "sections": "§4.1-4.3",
+      "note": "Facets taken from subsections of §4, the only taxonomy section. §4.4 Data Privacy-Oriented may be a misnumbered §4.3.3; it has no subsections and uses the X-Oriented pattern of §4.3's children. §3 is background on heterogeneity types, §5 is the authors' own experiments."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Heterogeneity and personalization",
+        "section": "4.1 Strategies for Heterogeneity and Personalization Concerns",
+        "definition": "The method copes with clients that differ in data, system, or model, or tailors the model to individual clients."
+      },
+      {
+        "id": "F2",
+        "label": "Communication efficiency",
+        "section": "4.2 Strategies for Communication Efficiency and Optimization",
+        "definition": "How much is transmitted, how often, or by how many clients is reduced."
+      },
+      {
+        "id": "F3",
+        "label": "Security and privacy",
+        "section": "4.3 Strategies for Security and Privacy Concerns",
+        "definition": "The federation is defended against attacks or information leakage, at the clients or during aggregation."
+      }
+    ],
+    "narrative": {
+      "user": "Someone building a federated system whose clients differ in data, hardware and trustworthiness. They need to know which aggregation strategies address which problem.",
+      "relevant": "A paper whose contribution is how client updates are combined, or how clients are selected or their updates prepared, in order to handle heterogeneity, reduce communication, or resist attack and leakage. Peer-to-peer and gossip aggregation is in scope, since the problem of combining updates is the same without a central server. Systematic empirical comparisons of existing aggregation rules across heterogeneity or attack regimes are in scope.",
+      "non_relevant": "Federated applications in a domain where a standard aggregation rule is used off the shelf. Attack papers that demonstrate poisoning, backdoors or gradient inversion against a standard rule without proposing a defensive aggregation strategy. Federated unlearning, which removes a client's contribution after training rather than combining updates during it. Incentive mechanisms and game-theoretic client participation, which optimize rewards or auctions rather than aggregation. Purely local personalization such as client-side fine-tuning or adapter freezing, which addresses heterogeneity locally and leaves aggregation standard. Distributed training without the federated constraint that data stays local. Differential privacy or secure computation with no federated aggregation component. Benchmark suites and simulation frameworks that provide tooling without an aggregation method or a comparison of existing ones."
+    },
+    "rules": [
+      "F1 vs F2: for client selection, is the claimed benefit fewer or cheaper rounds (F2), or accuracy and fairness across heterogeneous clients (F1)?",
+      "F1 vs F3: both have Aggregation Process-Oriented subsections. Does the aggregation rule guard against malicious clients (F3), or reconcile honest clients that differ (F1)?",
+      "F2 vs F3: for compression or secure aggregation, is the claimed benefit less communication (F2) or less leakage (F3)? Assign both only if both are evaluated."
+    ],
+    "support_notes": "Heterogeneity, communication and privacy are the three standard concerns of federated learning and many papers address two. Previously flagged for that reason; flag lifted on the instructor's advice that facet correlation is acceptable at this sample size. F2 and F3 support not separately measured."
+  },
+  {
+    "query_id": "q08",
+    "query": "hallucination in large language models causes detection mitigation",
+    "facet_source": {
+      "arxiv_id": "2608.26168",
+      "title": "Hallucinations in LLMs: A Lifecycle-Based Survey of Causes, Detection, Mitigation, and Prevention",
+      "sections": "§3-6",
+      "note": "§2.5 Lifecycle Coding Rules gives explicit assignment rules for all four categories and they are used verbatim. §2.7 confirms the four chapters are the taxonomy; data/training/inference is a secondary axis repeating inside each and is not used. §7 Benchmark analysis excluded."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Causes of hallucination",
+        "section": "3 Causes of Hallucination",
+        "definition": "The paper explains the mechanisms or conditions that produce hallucination (§2.5)."
+      },
+      {
+        "id": "F2",
+        "label": "Detection of hallucination",
+        "section": "4 Detection of Hallucination",
+        "definition": "The paper detects hallucination after it occurs (§2.5)."
+      },
+      {
+        "id": "F3",
+        "label": "Mitigation of hallucination",
+        "section": "5 Mitigation of Hallucination",
+        "definition": "The paper improves or trims a post-generated hallucinated output (§2.5)."
+      },
+      {
+        "id": "F4",
+        "label": "Prevention",
+        "section": "6 Prevention of Hallucination",
+        "definition": "The paper changes upstream data and/or training processes to decrease hallucinations (§2.5)."
+      }
+    ],
+    "narrative": {
+      "user": "A researcher deciding how to make a deployed LLM more factual. They need to know why hallucinations occur, how to tell when one has happened, and which interventions act before, during or after generation.",
+      "relevant": "A paper that explains the mechanisms producing hallucination, detects it after it occurs, corrects a generated output, or changes data or training so it is less likely to occur. Retrieval systems designed specifically to prevent or correct fabrication, such as adaptive or self-triggered retrieval, are in scope. Faithfulness work is in scope where the model asserts something its own reasoning or context does not support, including unfaithful chain-of-thought and context-conflicting rationales.",
+      "non_relevant": "Papers that report a hallucination rate as one metric among many without studying the phenomenon. Multimodal and vision-language object hallucination, which shares the vocabulary but concerns visual grounding. Fact-checking and misinformation verification, where the claim being checked is human-written rather than model-generated. Uncertainty quantification and calibration that measures token confidence or expected calibration error without targeting hallucination; such work is in scope only where the confidence signal is used to detect fabrication. Knowledge editing such as ROME and MEMIT, which updates outdated world facts rather than addressing ungrounded fabrication. General robustness, safety or jailbreak work where hallucination appears in a list of risks. Retrieval pipelines where the contribution is the architecture and reduced hallucination is reported as a benefit. Reasoning and arithmetic errors, where the model computes wrongly rather than asserting something unsupported."
+    },
+    "rules": [
+      "F3 vs F4 (from §2.5): does the method act on output already generated (F3), or change data or training so hallucinations are less likely to be produced (F4)? A detect-then-revise pipeline is F3; training-data filtering is F4.",
+      "F1 vs F2: for probing work, does the paper evaluate a usable detector (F2), or only analyse internal signals (F1)?",
+      "F2 vs F3: if a detect-then-revise pipeline changes the output, assign F3. Add F2 only if the detector is evaluated on its own.",
+      "Multi-assignment: §2.5 states that a study affecting more than one stage receives every relevant category, explicitly to avoid forcing artificial distinctions. Assign all that apply."
+    ],
+    "support_notes": "F1 measured 14/20, though most hits are mitigation papers that mention causes in framing; analysis-only work is thinner than the count suggests. All four facets have author-written assignment rules, so no definition is mine."
+  },
+  {
+    "query_id": "q09",
+    "query": "attention sinks in transformers",
+    "facet_source": {
+      "arxiv_id": "2604.10098",
+      "title": "Attention Sink in Transformers: A Survey on Utilization, Interpretation, and Mitigation",
+      "sections": "§3-5",
+      "note": "Matches the title's three terms. §2's model-family split (language models vs vision transformers) cuts across the facets; §6 is an application-stage axis. Appendix A tabulates surveyed papers and can be used as a direct partition test."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Fundamental utilization",
+        "section": "3 Fundamental Utilization of Attention Sink",
+        "definition": "The sink is exploited as it is and left in place, and something is gained from doing so: sink token preservation, attention redistribution, learnable prefix tokens, sink token repurposing."
+      },
+      {
+        "id": "F2",
+        "label": "Mechanistic interpretation",
+        "section": "4 Mechanistic Interpretation of Attention Sink",
+        "definition": "Why sinks form is explained, without changing the model: softmax limitations, outlier circuits, implicit attention bias, geometric anchoring."
+      },
+      {
+        "id": "F3",
+        "label": "Strategic mitigation",
+        "section": "5 Strategic Mitigation of Attention Sink",
+        "definition": "The architecture or pre-training is changed so that the sink is reduced or does not form: gated attention, modified softmax, learnable attention bias, pre-training interventions."
+      }
+    ],
+   "narrative": {
+      "user": "Someone who has noticed that transformer attention concentrates heavily on a few early tokens and wants to know whether to exploit it, explain it, or remove it.",
+      "relevant": "A paper that studies attention sinks directly: using them for some benefit, explaining why they form, or changing the model so they do not. Streaming and cache methods that retain sink tokens as their mechanism are in scope. Massive-activation and outlier-feature work is in scope where it connects those outliers to attention behaviour, even when the motivation is quantization.",
+      "non_relevant": "Attention sparsity and efficiency work that preserves sink tokens as an implementation detail without studying them. Positional bias work such as lost-in-the-middle and primacy-recency effects, which concerns where in the context a model retrieves from rather than the sink mechanism. Token pruning and prompt compression that drops low-attention tokens by score without examining sink behaviour. Attention-head interpretability on functional heads such as induction or retrieval heads, which analyses concentration on content tokens rather than sinks. Outlier and massive-activation work for quantization that never connects the outliers to attention. Positional encoding papers with no sink component."
+    },
+    "rules": [
+      "F1 vs F3 (learnable additions): does the addition give the model an explicit sink to use (F1), or remove the model's need for one (F3)?",
+      "F1 vs F3 (redistribution): is attention reallocated in an already-trained model while the sink still forms (F1), or is training or the architecture changed so the sink is suppressed (F3)?",
+      "F2 vs F3: the headings mirror each other (softmax limitations vs modified softmax; implicit bias vs learnable bias). Does the paper train and evaluate a modified model (F3), or only explain (F2)? Assign both if it does both.",
+      "F1 vs F2: for a paper that finds the sink and then exploits it, is the mechanistic claim itself tested (add F2), or does it only motivate the method (F1 only)?",
+      "Many KV-cache papers keep sink tokens as an implementation detail. Assign F1 only when sink handling is a claimed contribution."
+    ],
+    "support_notes": "F3 measured 17/20. Topic is narrow but well represented in cs.CL and cs.LG."
+  },
+  {
+    "query_id": "q10",
+    "query": "parameter efficient adaptation of language models to new tasks",
+    "facet_source": {
+      "arxiv_id": "2610.00928",
+      "title": "Efficient Task Adaptation in Large Language Models: A Survey of Weight-Based, Prompt-Based, and Embedding-Based Adaptations",
+      "sections": "§3-5",
+      "note": "Matches the three paradigms in the title. §2 and Table 1 categorise by where task information is encoded: model weights, input prompts, or embeddings injected into activations. §2 places soft prompting and prefix tuning under learned embedding approaches, citing Lester et al. 2021 and Li & Liang 2021."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Weight-based adaptation",
+        "section": "3 Weight-Based Adaptation",
+        "definition": "The model is adapted to a task by changing or adding parameters, for one task or several."
+      },
+      {
+        "id": "F2",
+        "label": "Prompt-based adaptation",
+        "section": "4 Prompt-Based Adaptation",
+        "definition": "The model's weights are frozen. Adaptation is by optimizing the text input, either the instructions or the demonstrations."
+      },
+      {
+        "id": "F3",
+        "label": "Embedding-based adaptation",
+        "section": "5 Embedding-Based Adaptation",
+        "definition": "The model's weights are frozen and no prompt text is optimized. The task is represented as a vector, either derived from in-context examples or learned."
+      }
+    ],
+    "narrative": {
+      "user": "Someone adapting a frozen or expensive model to a new task without full fine-tuning. They need to know whether to add parameters, optimize the prompt text, or inject a task vector into activations.",
+      "relevant": "A paper whose contribution adapts a model to a task efficiently, by training or adding a small number of weights, by optimizing the instructions or demonstrations given as input, or by constructing a task representation injected into activations. Quantized adaptation such as QLoRA is in scope where quantization is co-designed to make adaptation feasible. Adapter composition and routing is in scope where the aim is adapting efficiently to new tasks.",
+      "non_relevant": "Full fine-tuning, including full-model instruction tuning on instruction datasets. Papers using an off-the-shelf method such as LoRA to adapt a model for some application, without studying the adaptation. Weight-space task arithmetic and model merging such as TIES and DARE, which combine full fine-tuned weight deltas rather than injecting a representation into activations. Safety and alignment steering, including refusal vectors and preference optimization, which shifts general behaviour rather than adapting to a specific downstream task. Manual prompt engineering and static few-shot guides, with no optimization or learning method. Continual and multi-task learning where the contribution is forgetting or transfer. Pretraining efficiency. Inference-time quantization or caching that does not adapt the model to a task. Retrieval augmentation, which supplies knowledge rather than task specification."
+    },
+    "rules": [
+      "Soft prompts and prefix tuning are F3, not F2. The survey places them under learned embedding approaches (§2). The criterion is where task information physically lives: a soft prompt is a vector injected into activations, never tokenised as text.",
+      "F2 boundary: prompt-based adaptation interacts with the model only through its standard input-output interface (Table 1). Any method requiring access to parameters or internal activations is not F2.",
+      "F1 vs F3: F1 adds or modifies weights, applied at inference as task-specific weights. F3 adds no weights; it injects vectors into activations. LoRA is F1; function vectors and soft prompts are F3.",
+      "'Task vector' means two things. A difference between weight vectors used for task arithmetic or merging is F1. A vector in activation or embedding space is F3.",
+      "F2 vs F3: does the paper choose or order demonstrations as text (F2), or compress them into a vector that replaces them (F3)?",
+      "Prompt optimization, where an optimizer LLM refines prompt text from feedback, is F2 in this survey."
+    ],
+    "support_notes": "F3 measured 14/20. F1 and F2 abundant. The survey notes embedding methods use roughly 0.1K-130K parameters against LoRA's 3M+, confirming F1 and F3 are distinct categories rather than a spectrum."
+  },
+  {
+    "query_id": "q11",
+    "query": "test time scaling for reasoning",
+    "facet_source": {
+      "arxiv_id": "2606.08231",
+      "title": "Test-Time Scaling in Multimodal Foundation Models: A Comprehensive Survey of Generation and Reasoning",
+      "sections": "§3.1-3.3",
+      "note": "Facets taken from subsections of §3, the only method taxonomy. §4's generation/reasoning split is the application axis and is the split named in the title; §3.4 is comparative discussion. The F2 saturation rule below stands in for a reading of §3.2: assign F2 only when the scorer is a claimed contribution."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Sampling-based methods",
+        "section": "3.1 Sampling-based Methods",
+        "definition": "Several complete outputs are generated independently and one is selected or aggregated: best-of-N, majority voting."
+      },
+      {
+        "id": "F2",
+        "label": "Feedback-based methods",
+        "section": "3.2 Feedback-based Methods",
+        "definition": "The contribution is the signal that judges outputs, or the use of that signal to revise them: reward models, iterative refinement."
+      },
+      {
+        "id": "F3",
+        "label": "Search-based methods",
+        "section": "3.3 Search-based Methods",
+        "definition": "Partial outputs are expanded and pruned during generation: beam search, tree search, heuristic and adaptive search."
+      }
+    ],
+    "narrative": {
+      "user": "Someone who has a fixed model and is willing to spend more compute at inference to get better answers. They need to know whether to sample more outputs, score and revise them, or search over partial ones.",
+      "relevant": "A paper whose contribution is how additional inference-time compute is spent to improve output quality: sampling and selecting among complete outputs, judging or revising outputs, or expanding and pruning partial outputs during generation. Separate verifiers or process reward models scoring one generator's samples are in scope. Training that specifically teaches a model to allocate more inference compute, such as learned self-correction, backtracking or extended reasoning traces, is in scope even though the mechanism is trained.",
+      "non_relevant": "Inference efficiency, which reduces compute rather than spending more of it. Training that improves capability generally, where the gain is realised in a single pass rather than through inference-time allocation. Test-time training and adaptation, which updates weights on test inputs rather than keeping the model fixed. Standard decoding heuristics such as beam search, top-p and contrastive decoding, which operate over partial outputs without studying compute-scaling trade-offs. Single-pass prompting techniques such as zero-shot chain-of-thought, which elicit longer outputs without a sampling, verification or search strategy. Standalone reward model and verifier benchmarks that evaluate scoring in isolation without applying it to test-time scaling. Agentic pipelines where tool use and planning are the contribution rather than compute allocation. Ensembling outputs from several different models, as opposed to repeated sampling from one."
+    },
+    "rules": [
+      "F2 SATURATION RULE: assign F2 only when the scorer itself is a claimed contribution. Best-of-N needs a scorer and tree search is usually reward-guided, so F2 would otherwise attach to nearly every paper.",
+      "F1 vs F2: for best-of-N with a reward model, is a new scorer trained or evaluated (F2), or is the contribution the sampling and selection scheme (F1)?",
+      "F2 vs F3: for reward-guided tree search, is the contribution a new scorer (F2), a new search procedure (F3), or both?",
+      "F1 vs F3: does selection happen over complete outputs (F1), or over partial outputs step by step (F3)? Step-level best-of-N is F3.",
+      "F1 vs F2 (refinement): is one output revised over several rounds (F2), or are many outputs sampled in parallel (F1)?",
+      "Majority voting or best-of-N used only as a baseline is not F1.",
+      "SCOPE DECISION (confirmed): text-only test-time-scaling papers are in scope. The methods transfer directly to multimodal settings and excluding them would leave too little in a cs.CL-heavy corpus. Recorded as a stated scope decision."
+    ],
+    "support_notes": "F1 measured 18/20. F3 moderate; diffusion-side search for generation is largely cs.CV."
+  },
+  {
+    "query_id": "q12",
+    "query": "reducing kv cache memory in llm inference",
+    "facet_source": {
+      "arxiv_id": "2412.19442",
+      "title": "A Survey on Large Language Model Acceleration based on KV Cache Management",
+      "sections": "§IV-VI",
+      "note": "These match the three entries listed under §III Taxonomy, so the taxonomy is stated explicitly. §VII Datasets excluded as cutting across the facets."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Token-level optimization",
+        "section": "IV Token-level Optimization",
+        "definition": "The KV cache of an unchanged model is shrunk by deciding which entries to keep, how much budget each layer or head gets, or how entries are merged, quantized, or decomposed."
+      },
+      {
+        "id": "F2",
+        "label": "Model-level optimization",
+        "section": "V Model-level Optimization",
+        "definition": "The model's attention or architecture is changed so that it produces less KV cache in the first place: attention grouping and sharing, architecture alteration, non-Transformer architectures."
+      },
+      {
+        "id": "F3",
+        "label": "System-level optimization",
+        "section": "VI System-level Optimization",
+        "definition": "How the cache is stored, scheduled, and placed on hardware changes, while its contents are left unchanged."
+      }
+    ],
+    "narrative": {
+      "user": "An engineer serving a long-context model who is running out of GPU memory. They need to know whether to evict or compress cache entries, change the attention architecture, or manage memory differently at the system level.",
+      "relevant": "A paper whose contribution reduces the memory cost of the key-value cache, by shrinking what an unchanged model stores, changing the architecture so less is produced, or altering how the cache is stored, scheduled and placed. Streaming and sliding-window methods whose mechanism is capping cache size are in scope, as are context-compression methods such as gist tokens and autoencoding compressors that compress input into a smaller cache representation.",
+      "non_relevant": "Papers using an off-the-shelf cache method to serve some application. Prompt compression that shortens the text before encoding, as opposed to compressing the cache derived from it. IO-aware attention kernels such as FlashAttention, which reduce the intermediate attention matrix and memory bandwidth rather than the stored cache. Speculative decoding and draft-model serving, which target latency and often leave cache size unchanged or larger. Activation quantization such as SmoothQuant, which quantizes transient layer activations rather than stored keys and values. Parameter pruning, layer dropping and distillation, which reduce parameter count and FLOPs. Training-time memory optimization such as gradient checkpointing or activation recomputation. Long-context work that extends the window without addressing cache cost. Agent memory work where the cache is framed as something the model recalls from rather than a resource to shrink, which belongs to the agent memory query."
+    },
+    "rules": [
+      "VOCABULARY TRAP: 'VI-A1 Architectural Design' means memory-system architecture, not model architecture. Model architecture is F2; memory or serving architecture is F3.",
+      "F1 vs F2 (cross-layer): does the paper merge an existing model's caches at inference (F1), or change the architecture so layers share KV (F2)?",
+      "F1 vs F2 (low-rank): is low-rank compression applied to an unchanged model's cache (F1), or built into the attention design (F2)?",
+      "F1 vs F3 (offloading): is the contribution which entries to fetch (F1), or where and how the cache is stored and moved (F3)?",
+      "F1 vs F3 (quantization): is the contribution the quantization scheme (F1), or the kernels that run it (F3)?",
+      "A non-Transformer model paper gets F2 only if it frames itself as reducing KV cache. Otherwise it is off-topic.",
+      "Cross-query: this query takes KV-cache papers that frame the cache as a resource to shrink. q01 takes those that frame it as memory the model recalls from."
+    ],
+    "support_notes": "F3 measured 20/20. All three facets well represented."
+  },
+  {
+    "query_id": "q13",
+    "query": "treating neural network weights as data for learning",
+    "facet_source": {
+      "arxiv_id": "2603.10090",
+      "title": "A Survey of Weight Space Learning: Understanding, Representation, and Generation",
+      "sections": "§2-4",
+      "note": "Matches the title. §5 is an application-domain axis, §6 benchmarks organized by architecture. Facets are defined by each section's approach subsections (2.1, 3.1, 4.1), not by the use-case subsections, which overlap across sections."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Weight space understanding",
+        "section": "2 Weight Space Understanding",
+        "definition": "Symmetries of weight space are characterized (functional invariance, functional equivariance) and exploited directly on the weights. No encoder or generator over weights is trained."
+      },
+      {
+        "id": "F2",
+        "label": "Weight space representation",
+        "section": "3 Weight Space Representation",
+        "definition": "Trained networks' weights are encoded into a representation, which is used to predict behavior, retrieve models, or edit them."
+      },
+      {
+        "id": "F3",
+        "label": "Weight space generation",
+        "section": "4 Weight Space Generation",
+        "definition": "A network is trained that outputs new weights: hypernetworks, generative models."
+      }
+    ],
+    "narrative": {
+      "user": "A researcher who has a large collection of trained models and wants to operate on their weights directly: compare them, predict their behaviour, or generate new ones without training from scratch.",
+      "relevant": "A paper that treats network weights as the object of study: characterising the structure and symmetries of weight space, learning a representation over weights, or training a model that outputs weights. Permutation-alignment work that merges or compares models by exploiting functional invariance is in scope, as are hypernetworks and generative models that produce task-specific weights or adapter deltas.",
+      "non_relevant": "Model merging and knowledge editing that do not operate through weight-space structure: averaging, task arithmetic on its own, or locating and rewriting individual facts. Activation-space similarity methods such as CKA, SVCCA and model stitching, which compare models through hidden activations on probe data rather than through weight tensors. Mechanistic interpretability and circuit discovery, which reverse-engineer what particular weights compute rather than treating a weight set as a structured object. Loss landscape and optimization trajectory visualisation, which plots surfaces along chosen directions without learning a representation over weights or characterising symmetries. Initialization schemes and weight regularizers, which shape weights during training rather than studying trained ones. Compression, pruning and quantization, which modify weights to reduce cost."
+    },
+    "rules": [
+      "F1 vs F2: does the paper train an equivariant network that maps weights to an output or embedding (F2), or analyze and exploit symmetry without a learned encoder (F1)?",
+      "F1 vs F3 (merging): is a network trained to output the merged weights (F3)? Alignment-and-average merging that relies on invariance is F1.",
+      "F2 vs F3 (latent generators): are new weights produced (F3)? Add F2 only if the learned representation is also evaluated on its own.",
+      "F2 vs F3 (editing): for a learned network that outputs weight updates, does the paper decode from a representation of the weights (F2), or generate the update directly (F3)?",
+      "SCOPING RULE: ordinary knowledge-editing and model-merging papers are abundant and mostly off-topic. They get a facet only if they operate through the specific mechanism defined above.",
+      "Hypernetwork papers from meta-learning or federated learning get F3 only if weights are actually generated."
+    ],
+    "support_notes": "F2 measured 9/20. Thin but genuine; metanetworks taking weights as input are a small field. F3 best represented."
+  },
+  {
+    "query_id": "q14",
+    "query": "using llms to solve optimization problems",
+    "facet_source": {
+      "arxiv_id": "2606.15577",
+      "title": "Large Language Models as Optimizers: A Survey of Direct vs. Tool-Augmented Approaches and Their Performance Frontiers",
+      "sections": "§II-IV",
+      "note": "The title names two approaches but the body has three; §V-D confirms three paradigms. ABSTRACT/BODY MISMATCH if the abstract omits tool-creating. F1 and F2's subsections are chronological, so their definitions rest on top-level headings only and are less grounded than F3's."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Direct optimization",
+        "section": "II Direct Optimization",
+        "definition": "The LLM itself outputs candidate solutions to the problem, by prompting, iterative search, or fine-tuning. No external tool computes the answer."
+      },
+      {
+        "id": "F2",
+        "label": "Tool-augmented optimization",
+        "section": "III Tool-Augmented Optimization",
+        "definition": "The LLM hands the problem to an existing external tool, and the tool computes the solution."
+      },
+      {
+        "id": "F3",
+        "label": "Tool-creating approaches",
+        "section": "IV Tool-Creating Approaches: LLM-Driven Algorithm Discovery",
+        "definition": "The LLM produces a new algorithm or heuristic program: evolutionary program search, reflective and agent-based approaches."
+      }
+    ],
+    "narrative": {
+      "user": "Someone with a hard combinatorial or numerical optimization problem, wondering whether a language model helps. They need to know whether the model should propose solutions itself, drive an existing solver, or write a new algorithm.",
+      "relevant": "A paper where a language model is applied to an optimization problem, whether by producing candidate solutions directly, by formulating the problem for an external solver, or by generating an algorithm or heuristic that is then evaluated. Natural-language-to-solver formulation is in scope, including work evaluated on formulation or execution accuracy against a known optimum. Papers that demonstrate a general LLM-as-optimizer method are in scope where classic optimization problems are among the tasks evaluated, even if prompt optimization is also included.",
+      "non_relevant": "Optimizing a language model, including training objectives, hyperparameter search and inference efficiency. Prompt optimization as the sole target, which adapts a model rather than solving an optimization problem. LLM-driven AutoML, neural architecture search and hyperparameter tuning, which optimize machine learning pipelines rather than classic optimization problems. Symbolic planning, PDDL and itinerary agents, which share routing and scheduling vocabulary without a mathematical objective over a feasible space. Math word problem solving and theorem proving, which solve equations or proofs rather than optimizing an objective. General code generation evaluated on functional correctness with no optimization problem. Papers using an LLM only to explain or describe an optimization problem."
+    },
+    "rules": [
+      "F1 vs F2: does the final solution come out of the LLM's own output (F1), or is it computed by an external tool the LLM calls or configures (F2)?",
+      "F1 vs F3: is the object being searched a solution to one problem instance (F1), or a program then applied across instances (F3)?",
+      "F2 vs F3: for generated code, does it set up a problem for an existing tool (F2), or is the code itself the new algorithm being evaluated (F3)?",
+      "SCOPE DECISION (confirmed): prompt-optimization papers are out of scope. They use the same iterative-proposal loop but adapt a model rather than solve an optimization problem. The task adaptation survey (2610.00928) independently files prompt optimization under adaptation, so q10 and q14 draw this boundary consistently."
+    ],
+    "support_notes": "F3 measured 18/20, contrary to the expectation that evolutionary program search would be cs.NE. F2 not separately measured."
+  },
+  {
+    "query_id": "q15",
+    "query": "negative sampling for training dense retrievers",
+    "facet_source": {
+      "arxiv_id": "2603.18005",
+      "title": "Negative Sampling Techniques in Information Retrieval: A Survey",
+      "sections": "§4.1-4.3",
+      "note": "Facets taken from subsections of §4, which the author labels Taxonomy. §3 is background, §5 evaluation organized by benchmark."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Sampling techniques",
+        "section": "4.1 Sampling Techniques",
+        "definition": "Which documents to draw as negatives from the existing corpus or batch is decided: random and in-batch, static hard mining, dynamic hard mining, cluster-based, principled sampling."
+      },
+      {
+        "id": "F2",
+        "label": "False negative mitigation",
+        "section": "4.2 False Negative Mitigation",
+        "definition": "Sampled negatives that are actually relevant are dealt with, by removing or correcting them, or by making training tolerant of them."
+      },
+      {
+        "id": "F3",
+        "label": "Data-centric methods",
+        "section": "4.3 Data-Centric Methods",
+        "definition": "New training data is created rather than selected from what exists: data augmentation, synthetic data for generalization."
+      }
+    ],
+    "narrative": {
+      "user": "Someone training a dense retriever who knows negative choice drives performance. They need to know which sampling regimes exist, what to do about negatives that turn out to be relevant, and when to generate data rather than sample it.",
+      "relevant": "A paper whose contribution concerns the negative examples used to train a retrieval model: how they are drawn, how false negatives are detected or tolerated, or how training data is created to supply them. Loss modifications are in scope where the objective is the mechanism for tolerating false negatives, such as debiased or weighted contrastive losses. Cross-encoder distillation is in scope where the teacher scores or filters the bi-encoder's hard negatives.",
+      "non_relevant": "Papers using a standard negative recipe without studying it. Negative sampling in recommender systems and collaborative filtering, which shares the vocabulary but operates on user-item interactions rather than query-document retrieval. Knowledge graph embedding negative sampling, which corrupts entity-relation triples for link prediction. Noise-contrastive estimation for word embeddings, which approximates a softmax over a vocabulary. Symmetric sentence-similarity contrastive learning such as SimCSE and STS work, where both sides of the pair are sentences rather than a query and a document. Contrastive learning in vision, speech or other domains where the task is not retrieval. Reranking and cross-encoder work with no bearing on the retriever's negatives. Synthetic query generation that does not supply or shape negatives. Loss function papers where the objective improves retrieval generally and negatives are incidental. Positive-unlabelled learning outside a retrieval setting."
+    },
+    "rules": [
+      "F1 vs F2: is the contribution how negatives are chosen (F1), or how negatives that are actually relevant are detected and handled (F2)? Assign both if both are claimed.",
+      "F1 vs F3: are the negatives taken from the existing corpus (F1), or newly written, for example by an LLM (F3)?",
+      "F2 vs F3 (objective vs data): does the paper change the training objective (F2) or the training data (F3)?",
+      "F2 vs F3 (relabeling): does the paper relabel existing query-document pairs (F2), or create new pairs (F3)?",
+      "Synthetic query generation for retrievers is abundant and mostly unrelated to negatives. Assign F3 only when the generated data supplies or shapes the negatives."
+    ],
+    "support_notes": "F2 measured 6/20 and 5/20 across two query formulations and is expected to be sparse in the pooled candidates. RETAINED DELIBERATELY as a test case for whether survey-named facets can be underpopulated in practice; this is the second such instance after q01's dropped benchmarks facet. F1 measured 18/20."
+  },
+  {
+    "query_id": "q16",
+    "query": "emotion and mood aware recommender systems",
+    "facet_source": {
+      "arxiv_id": "2508.20289",
+      "title": "A Survey of Affective Recommender Systems: Modeling Attitudes, Emotions, and Moods for Personalization",
+      "sections": "§4-6",
+      "note": "§2.1 Classification Scheme is the author's own definition source and is used verbatim below. The axis is Scherer's typology, which distinguishes affective states by duration, intensity and cognitive involvement. §7 Hybrid is excluded: a hybrid is a combination of the other facets and binary vectors already record it as two 1s."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Attitude-aware",
+        "section": "4 Attitude-Aware Recommender Systems",
+        "definition": "The system extracts and models stable evaluative dispositions from unstructured user-generated content: textual reviews, social media posts and comments, blog writing, forum discussions. Ratings, clicks and purchase histories alone do not qualify."
+      },
+      {
+        "id": "F2",
+        "label": "Emotion-aware",
+        "section": "5 Emotion-Aware Recommender Systems",
+        "definition": "The system models transient affective responses arising from a specific stimulus, typically using a categorical model (Ekman's six basic emotions) or a dimensional model (Russell's valence-arousal, Plutchik's multidimensional framework)."
+      },
+      {
+        "id": "F3",
+        "label": "Mood-aware",
+        "section": "6 Mood-Aware Recommender Systems",
+        "definition": "The system models longer-lasting affective states with no specific object, such as cheerfulness, melancholy or relaxation, inferred from behavioural signals, contextual information or interaction history, and influencing long-term consumption patterns."
+      }
+    ],
+    "narrative": {
+      "user": "Someone building a recommender that responds to how a user feels rather than only what they clicked. They need to see which affective signals have been used, how each is obtained, and how it is integrated into ranking or retrieval.",
+      "relevant": "A paper that models a user's affective state — a stable attitude, a transient emotion or a longer-lasting mood — and uses it to produce or rank recommendations. Systems that infer a user's mood and match it against item-level affective properties, such as mood-congruent or iso-principle music retrieval, are in scope because the user's state is modelled.",
+      "non_relevant": "Clinical and diagnostic affect research: depression detection, speech emotion recognition and mood inference from sensors match the vocabulary but recommend nothing. Empathetic dialogue agents that detect emotion to generate comforting responses rather than to rank or retrieve items. Aspect-based sentiment analysis that extracts opinion polarity toward item attributes to build item profiles, rather than modelling the user's evaluative disposition. Context-aware recommenders using time, location or weather with no internal affective state. Satisfaction, churn and engagement prediction where the signal is a reward rather than a represented affective state. Item-level mood tagging with no model of the listener's state. Sentiment analysis with no recommendation component."
+    },
+    "rules": [
+      "The axis is Scherer's typology: affective states are distinguished by duration, intensity and cognitive involvement. Attitudes are stable, emotions are transient and stimulus-bound, moods are longer-lasting and objectless.",
+      "F1 scope (§2.1): every recommender encodes attitude implicitly through clicks, purchases and ratings. This survey scopes F1 to systems that extract attitudes from unstructured user-generated content. A collaborative-filtering paper operating on a rating matrix is not F1.",
+      "F2 vs F3: emotion is transient and tied to a specific stimulus; mood is longer-lasting with no specific object. Classify by what the paper actually models, not by what it calls it — §9.3 notes the field conflates sentiment, emotion and mood.",
+      "F1 vs F3: is the context signal the user's mood (F3), or situational context used alongside attitude data (F1)?",
+      "Item mood vs user mood: in music recommendation 'mood' often tags the track rather than the listener. F3 requires the user's affective state, consistent with §2.1's framing of mood as a property of the user that shapes consumption. Track-mood labels do not qualify.",
+      "Serendipity papers: the survey files serendipity as an attitude-emotion hybrid, being the emotion of unexpectedness plus a positive evaluative attitude toward the outcome. Assign F1 and F2 only when the paper models both components. A serendipity paper treating it as a diversity metric with no affect modelling gets neither."
+    ],
+    "support_notes": "F3 measured 12/20 then 10/20 with user-state terms, heavily concentrated in music recommendation. Much of that is likely item-mood tagging, which the §2.1 rule excludes, so F3 may be thinner in practice than measured; to be watched in the pilot. Clinical affect work (depression detection, speech analysis) matches the vocabulary without being recommendation and must be excluded."
+  },
+  {
+    "query_id": "q17",
+    "query": "generative recommendation",
+    "facet_source": {
+      "arxiv_id": "2510.27157",
+      "title": "A Survey on Generative Recommendation: Data, Model, and Tasks",
+      "sections": "§3-5",
+      "note": "Reopened after an earlier rejection on the grounds that every paper lands in the task facet. The instructor advised that facet correlation is acceptable, so that is no longer a rejection reason. §1, §2, §6 and §7 are framing."
+    },
+    "facets": [
+      {
+        "id": "F1",
+        "label": "Data-level",
+        "section": "3 Data-Level Opportunities",
+        "definition": "The contribution is the data: generating it (open-world knowledge for augmentation, agent-based behaviour simulation) or unifying it across domains, tasks or modalities."
+      },
+      {
+        "id": "F2",
+        "label": "Model-level",
+        "section": "4 Model-Level Opportunities",
+        "definition": "The contribution is the generative recommender itself: LLM-based, a large recommendation model, or diffusion-based."
+      },
+      {
+        "id": "F3",
+        "label": "Task-level",
+        "section": "5 Task-Level Opportunities",
+        "definition": "The paper operates in one of the survey's task settings: top-K recommendation, personalized content generation, conversational, explainable, or recommendation reasoning."
+      }
+    ],
+    "narrative": {
+      "user": "A recommender systems researcher weighing whether generative models change how recommendation is done. They need to see where the leverage sits: in the data, in the model, or in the task being reformulated.",
+      "relevant": "A paper that applies generative modelling to recommendation, whether the contribution is the data, the recommender itself, or the task setting it operates in. Generative here includes LLM-based, diffusion-based and other generative architectures, following the survey's own scope. Semantic-ID pipelines such as RQ-VAE over text embeddings are in scope where the generative component produces the recommendation. Alignment and instruction-tuning work is in scope where the contribution is adapting a model for recommendation.",
+      "non_relevant": "Discriminative recommenders with no generative component: matrix factorization, two-tower retrieval, standard sequential models. Generative retrieval for ad-hoc document search such as DSI and NCI, which shares the autoregressive and semantic-ID machinery but targets web search rather than user-item recommendation. Papers using an LLM only to produce features or embeddings consumed by a conventional ranker, where no generative component produces the recommendation. Post-hoc explanation generation, where an LLM writes justifications for items a conventional ranker has already chosen. LLM user simulators that generate synthetic feedback to evaluate recommenders rather than to recommend. General LLM work that includes a recommendation benchmark among several evaluations without a recommendation contribution. Content generation with no recommendation or ranking component."
+    },
+    "rules": [
+      "F3 is presence-based: assign it for the task setting the paper operates in, whether or not that setting is a claimed contribution. F3 is expected to be near-universal; this is recorded rather than corrected.",
+      "F1 vs F2 (diffusion augmentation): the survey files diffusion-based augmentation under the model section (§4.3.1), not the data section. Follow that. Add F1 only if the paper claims a data contribution beyond the generator.",
+      "F1 vs F2 (unified models): is the contribution unifying data sources and formats (F1, §3.2.4), or the model's architecture or scale (F2, §4.2)?",
+      "F1 vs F3: is the paper combining data from existing tasks (F1, §3.2.2), or working in one of §5's task settings (F3)?",
+      "F2 vs F3: for an LLM-based conversational or explainable recommender, assign both — the model is F2 and the task setting is F3.",
+      "§5.4 Explainable and §5.5 Recommendation Reasoning have no stated boundary. Treat a paper as explainable when the output is a justification shown to the user, and as reasoning when the contribution is the inference process itself."
+    ],
+    "support_notes": "F3's non-top-K settings measured 20/20. F2 abundant in cs.IR; F1 adequate."
+  }
+]

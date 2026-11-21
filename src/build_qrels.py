@@ -63,7 +63,7 @@ def main():
         counts = Counter()
         for r in rel:
             for i, v in enumerate(r.get("facets", [])):
-                if v:
+                if v and i < len(q["facets"]):
                     counts[q["facets"][i]["id"]] += 1
         spread = " ".join(f"{f['id']}:{counts.get(f['id'], 0)}" for f in q["facets"])
         print(f"{qid:6} {len(rows):>7} {len(rel):>5} "

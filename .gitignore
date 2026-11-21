@@ -23,4 +23,4 @@ data/raw/
 data/embeddings/
 data/corpus/corpus.jsonl
 data/pools/
-annotation/
+annotation/*.html

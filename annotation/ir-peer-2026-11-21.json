@@ -1,0 +1,1686 @@
+{
+  "annotator": "ir-peer",
+  "exported": "2026-11-21T19:57:41.224Z",
+  "n": 128,
+  "judgments": [
+    {
+      "query_id": "q01",
+      "doc_id": "2610.15244",
+      "grade": 1,
+      "facets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290302634
+    },
+    {
+      "query_id": "q01",
+      "doc_id": "2605.18421",
+      "grade": 2,
+      "facets": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795140635222
+    },
+    {
+      "query_id": "q01",
+      "doc_id": "2602.22523",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795140662411
+    },
+    {
+      "query_id": "q01",
+      "doc_id": "2601.01885",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290348613
+    },
+    {
+      "query_id": "q01",
+      "doc_id": "2512.18746",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290361443
+    },
+    {
+      "query_id": "q01",
+      "doc_id": "2601.14287",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290373705
+    },
+    {
+      "query_id": "q01",
+      "doc_id": "2606.07909",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290384963
+    },
+    {
+      "query_id": "q02",
+      "doc_id": "2502.09854",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290547295
+    },
+    {
+      "query_id": "q02",
+      "doc_id": "2412.14835",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290559990
+    },
+    {
+      "query_id": "q02",
+      "doc_id": "2511.09396",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290576912
+    },
+    {
+      "query_id": "q02",
+      "doc_id": "2602.12279",
+      "grade": 1,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290598611
+    },
+    {
+      "query_id": "q02",
+      "doc_id": "2602.09080",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290611377
+    },
+    {
+      "query_id": "q02",
+      "doc_id": "2512.14052",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290640397
+    },
+    {
+      "query_id": "q02",
+      "doc_id": "2508.07329",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290653810
+    },
+    {
+      "query_id": "q03",
+      "doc_id": "2610.24822",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290746745
+    },
+    {
+      "query_id": "q03",
+      "doc_id": "2609.02486",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290769359
+    },
+    {
+      "query_id": "q03",
+      "doc_id": "2601.13856",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290787553
+    },
+    {
+      "query_id": "q03",
+      "doc_id": "2404.10226",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290797422
+    },
+    {
+      "query_id": "q03",
+      "doc_id": "2509.02123",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290809447
+    },
+    {
+      "query_id": "q03",
+      "doc_id": "2503.13964",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290825552
+    },
+    {
+      "query_id": "q03",
+      "doc_id": "2607.24748",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290856935
+    },
+    {
+      "query_id": "q04",
+      "doc_id": "2405.03998",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290912505
+    },
+    {
+      "query_id": "q04",
+      "doc_id": "2504.10146",
+      "grade": 1,
+      "facets": [
+        0,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290941176
+    },
+    {
+      "query_id": "q04",
+      "doc_id": "2512.20034",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290959118
+    },
+    {
+      "query_id": "q04",
+      "doc_id": "2508.09450",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290971874
+    },
+    {
+      "query_id": "q04",
+      "doc_id": "2402.09230",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290984233
+    },
+    {
+      "query_id": "q04",
+      "doc_id": "2510.13756",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795290995061
+    },
+    {
+      "query_id": "q04",
+      "doc_id": "2510.13163",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795291006918
+    },
+    {
+      "query_id": "q04",
+      "doc_id": "2510.23538",
+      "grade": 2,
+      "facets": [
+        1,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795291021478
+    },
+    {
+      "query_id": "q05",
+      "doc_id": "2411.10163",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795189662082
+    },
+    {
+      "query_id": "q05",
+      "doc_id": "2509.15020",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795189673273
+    },
+    {
+      "query_id": "q05",
+      "doc_id": "2409.13317",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795189685604
+    },
+    {
+      "query_id": "q05",
+      "doc_id": "2602.17445",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795189699357
+    },
+    {
+      "query_id": "q05",
+      "doc_id": "2409.19839",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795189713662
+    },
+    {
+      "query_id": "q05",
+      "doc_id": "2501.03491",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795189756690
+    },
+    {
+      "query_id": "q05",
+      "doc_id": "2504.14690",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795189776036
+    },
+    {
+      "query_id": "q05",
+      "doc_id": "2507.15337",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795189786985
+    },
+    {
+      "query_id": "q06",
+      "doc_id": "2410.07030",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795190949626
+    },
+    {
+      "query_id": "q06",
+      "doc_id": "2506.12161",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795190966525
+    },
+    {
+      "query_id": "q06",
+      "doc_id": "2604.21469",
+      "grade": 2,
+      "facets": [
+        1,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795190980293
+    },
+    {
+      "query_id": "q06",
+      "doc_id": "2408.03819",
+      "grade": 2,
+      "facets": [
+        1,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795191015635
+    },
+    {
+      "query_id": "q06",
+      "doc_id": "2401.06643",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795191033227
+    },
+    {
+      "query_id": "q06",
+      "doc_id": "2604.18087",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795191059969
+    },
+    {
+      "query_id": "q06",
+      "doc_id": "2403.10882",
+      "grade": 1,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795191103194
+    },
+    {
+      "query_id": "q06",
+      "doc_id": "2408.16502",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795191123761
+    },
+    {
+      "query_id": "q07",
+      "doc_id": "2410.09676",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795192799252
+    },
+    {
+      "query_id": "q07",
+      "doc_id": "2512.08267",
+      "grade": 2,
+      "facets": [
+        1,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795192851513
+    },
+    {
+      "query_id": "q07",
+      "doc_id": "2503.15842",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795192904139
+    },
+    {
+      "query_id": "q07",
+      "doc_id": "2405.02360",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795192918045
+    },
+    {
+      "query_id": "q07",
+      "doc_id": "2505.06497",
+      "grade": 2,
+      "facets": [
+        1,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795192935768
+    },
+    {
+      "query_id": "q07",
+      "doc_id": "2502.05273",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795192954711
+    },
+    {
+      "query_id": "q07",
+      "doc_id": "2505.08646",
+      "grade": 1,
+      "facets": [
+        1,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795192975268
+    },
+    {
+      "query_id": "q08",
+      "doc_id": "2604.06165",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795195514298
+    },
+    {
+      "query_id": "q08",
+      "doc_id": "2602.00723",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795195543460
+    },
+    {
+      "query_id": "q08",
+      "doc_id": "2409.17173",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795195560393
+    },
+    {
+      "query_id": "q08",
+      "doc_id": "2508.00881",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795195588194
+    },
+    {
+      "query_id": "q08",
+      "doc_id": "2508.08285",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795195612854
+    },
+    {
+      "query_id": "q08",
+      "doc_id": "2512.02527",
+      "grade": 1,
+      "facets": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795195633477
+    },
+    {
+      "query_id": "q08",
+      "doc_id": "2605.12384",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795195648106
+    },
+    {
+      "query_id": "q08",
+      "doc_id": "2511.11087",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795195663289
+    },
+    {
+      "query_id": "q09",
+      "doc_id": "2605.27458",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795207931479
+    },
+    {
+      "query_id": "q09",
+      "doc_id": "2606.07604",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795207948587
+    },
+    {
+      "query_id": "q09",
+      "doc_id": "2602.00294",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795207967955
+    },
+    {
+      "query_id": "q09",
+      "doc_id": "2609.02986",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795207994190
+    },
+    {
+      "query_id": "q09",
+      "doc_id": "2610.13337",
+      "grade": 2,
+      "facets": [
+        1,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795208171109
+    },
+    {
+      "query_id": "q09",
+      "doc_id": "2504.02732",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795208189147
+    },
+    {
+      "query_id": "q09",
+      "doc_id": "2402.07901",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795208226835
+    },
+    {
+      "query_id": "q09",
+      "doc_id": "2603.25803",
+      "grade": 2,
+      "facets": [
+        1,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795208242649
+    },
+    {
+      "query_id": "q10",
+      "doc_id": "2403.03432",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211324573
+    },
+    {
+      "query_id": "q10",
+      "doc_id": "2402.17263",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211341745
+    },
+    {
+      "query_id": "q10",
+      "doc_id": "2403.02756",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211363688
+    },
+    {
+      "query_id": "q10",
+      "doc_id": "2405.00201",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211379989
+    },
+    {
+      "query_id": "q10",
+      "doc_id": "2406.16377",
+      "grade": 1,
+      "facets": [
+        1,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211400969
+    },
+    {
+      "query_id": "q10",
+      "doc_id": "2405.05493",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211421380
+    },
+    {
+      "query_id": "q10",
+      "doc_id": "2408.06663",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211440877
+    },
+    {
+      "query_id": "q10",
+      "doc_id": "2501.00365",
+      "grade": 1,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211458974
+    },
+    {
+      "query_id": "q11",
+      "doc_id": "2502.07803",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211882312
+    },
+    {
+      "query_id": "q11",
+      "doc_id": "2606.06915",
+      "grade": 1,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795211807073
+    },
+    {
+      "query_id": "q11",
+      "doc_id": "2610.31667",
+      "grade": 2,
+      "facets": [
+        0,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795274538774
+    },
+    {
+      "query_id": "q11",
+      "doc_id": "2505.19187",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795274555692
+    },
+    {
+      "query_id": "q11",
+      "doc_id": "2509.04474",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795274587542
+    },
+    {
+      "query_id": "q11",
+      "doc_id": "2504.00810",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795274606333
+    },
+    {
+      "query_id": "q11",
+      "doc_id": "2502.12018",
+      "grade": 2,
+      "facets": [
+        0,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795274626782
+    },
+    {
+      "query_id": "q12",
+      "doc_id": "2510.06175",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795276517044
+    },
+    {
+      "query_id": "q12",
+      "doc_id": "2609.03235",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795276541342
+    },
+    {
+      "query_id": "q12",
+      "doc_id": "2609.16161",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795276555000
+    },
+    {
+      "query_id": "q12",
+      "doc_id": "2405.12532",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795276568536
+    },
+    {
+      "query_id": "q12",
+      "doc_id": "2411.17089",
+      "grade": 2,
+      "facets": [
+        0,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795276582873
+    },
+    {
+      "query_id": "q12",
+      "doc_id": "2610.31479",
+      "grade": 1,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795276605101
+    },
+    {
+      "query_id": "q12",
+      "doc_id": "2608.02901",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795276620648
+    },
+    {
+      "query_id": "q12",
+      "doc_id": "2610.18140",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795276647729
+    },
+    {
+      "query_id": "q13",
+      "doc_id": "2410.05107",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795278456713
+    },
+    {
+      "query_id": "q13",
+      "doc_id": "2506.08270",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795278479057
+    },
+    {
+      "query_id": "q13",
+      "doc_id": "2608.28948",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795278491943
+    },
+    {
+      "query_id": "q13",
+      "doc_id": "2602.18628",
+      "grade": 2,
+      "facets": [
+        0,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795278505186
+    },
+    {
+      "query_id": "q13",
+      "doc_id": "2410.19912",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795278531172
+    },
+    {
+      "query_id": "q13",
+      "doc_id": "2510.16851",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795278544742
+    },
+    {
+      "query_id": "q13",
+      "doc_id": "2507.15869",
+      "grade": 1,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795278563157
+    },
+    {
+      "query_id": "q13",
+      "doc_id": "2410.09186",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795278615310
+    },
+    {
+      "query_id": "q14",
+      "doc_id": "2411.18321",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795281437044
+    },
+    {
+      "query_id": "q14",
+      "doc_id": "2407.17823",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795281453444
+    },
+    {
+      "query_id": "q14",
+      "doc_id": "2603.23004",
+      "grade": 1,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795281464704
+    },
+    {
+      "query_id": "q14",
+      "doc_id": "2504.08671",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795281482114
+    },
+    {
+      "query_id": "q14",
+      "doc_id": "2609.37361",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795281500663
+    },
+    {
+      "query_id": "q14",
+      "doc_id": "2507.09050",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795281513101
+    },
+    {
+      "query_id": "q14",
+      "doc_id": "2503.10968",
+      "grade": 2,
+      "facets": [
+        0,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795281525205
+    },
+    {
+      "query_id": "q14",
+      "doc_id": "2410.04234",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795281540589
+    },
+    {
+      "query_id": "q15",
+      "doc_id": "2406.05087",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795283328473
+    },
+    {
+      "query_id": "q15",
+      "doc_id": "2506.01877",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795283370655
+    },
+    {
+      "query_id": "q15",
+      "doc_id": "2609.22770",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795283386530
+    },
+    {
+      "query_id": "q15",
+      "doc_id": "2610.35045",
+      "grade": 2,
+      "facets": [
+        1,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795283412286
+    },
+    {
+      "query_id": "q15",
+      "doc_id": "2508.11670",
+      "grade": 2,
+      "facets": [
+        1,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795283428702
+    },
+    {
+      "query_id": "q15",
+      "doc_id": "2609.13486",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795283448685
+    },
+    {
+      "query_id": "q15",
+      "doc_id": "2505.24279",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795283462246
+    },
+    {
+      "query_id": "q16",
+      "doc_id": "2505.16121",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795285322468
+    },
+    {
+      "query_id": "q16",
+      "doc_id": "2505.09539",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795285334709
+    },
+    {
+      "query_id": "q16",
+      "doc_id": "2503.22752",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795285347999
+    },
+    {
+      "query_id": "q16",
+      "doc_id": "2403.12087",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795285366544
+    },
+    {
+      "query_id": "q16",
+      "doc_id": "2410.13374",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795285387843
+    },
+    {
+      "query_id": "q16",
+      "doc_id": "2603.11796",
+      "grade": 2,
+      "facets": [
+        0,
+        0,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795285403216
+    },
+    {
+      "query_id": "q16",
+      "doc_id": "2405.19373",
+      "grade": 0,
+      "facets": [
+        0,
+        0,
+        0
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795285415732
+    },
+    {
+      "query_id": "q17",
+      "doc_id": "2508.10615",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795288998132
+    },
+    {
+      "query_id": "q17",
+      "doc_id": "2509.21777",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795289367499
+    },
+    {
+      "query_id": "q17",
+      "doc_id": "2508.16126",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795289387568
+    },
+    {
+      "query_id": "q17",
+      "doc_id": "2610.17368",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795289591283
+    },
+    {
+      "query_id": "q17",
+      "doc_id": "2410.02939",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795289613343
+    },
+    {
+      "query_id": "q17",
+      "doc_id": "2609.34306",
+      "grade": 2,
+      "facets": [
+        0,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795289739088
+    },
+    {
+      "query_id": "q17",
+      "doc_id": "2403.19021",
+      "grade": 2,
+      "facets": [
+        1,
+        1,
+        1
+      ],
+      "flag": false,
+      "note": "",
+      "ts": 1795289789138
+    }
+  ]
+}
